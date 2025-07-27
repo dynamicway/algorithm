@@ -1,5 +1,5 @@
 import pytest
-from karatsuba import karatsuba
+from divide_and_conquer.karatsuba import karatsuba
 
 class TestKaratsuba:
     
