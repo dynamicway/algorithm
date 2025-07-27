@@ -40,3 +40,7 @@ class TestKaratsuba:
         assert karatsuba(1, 1) == 1
         assert karatsuba(10, 10) == 100
         assert karatsuba(99, 99) == 9801
+
+    def test_negative_cases(self):
+        assert karatsuba(-9, 9) == -81
+        assert karatsuba(-8, -8) == 64
