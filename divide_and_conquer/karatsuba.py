@@ -2,20 +2,20 @@ def karatsuba(a, b):
     if a < 10 or b < 10:
         return a * b
     
-    mid = get_mid(a, b)
+    split_point = get_split_point(a, b)
 
-    a0 = a // mid
-    a1 = a % mid
-    b0 = b // mid
-    b1 = b % mid
+    a_high = a // split_point
+    a_low = a % split_point
+    b_high = b // split_point
+    b_low = b % split_point
 
-    z0 = karatsuba(a1, b1)
-    z1 = karatsuba(a0 + a1, b0 + b1)
-    z2 = karatsuba(a0, b0)
+    z0 = karatsuba(a_low, b_low)
+    z1 = karatsuba(a_high + a_low, b_high + b_low)
+    z2 = karatsuba(a_high, b_high)
 
-    return mid ** 2 * z2 + mid * (z1 - z2 - z0) + z0
+    return split_point ** 2 * z2 + split_point * (z1 - z2 - z0) + z0
     
     
-def get_mid(a, b):
-    max_ren = max(len(str(a)), len(str(b)))
-    return 10 ** (max_ren // 2)
+def get_split_point(a, b):
+    max_length = max(len(str(a)), len(str(b)))
+    return 10 ** (max_length // 2)
