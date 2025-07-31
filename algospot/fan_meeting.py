@@ -22,26 +22,30 @@ def solve(members, fans):
 
 
 def karatsuba(a, b):
-    if (len(a) < 50 or len(b) < 50):
+    an, bn = len(a), len(b)
+
+    if (an == 0 or bn == 0):
+        return []
+
+    if (an < bn):
+        return karatsuba(b, a)
+
+    if (bn < 50):
         return multiply(a, b)
     
-    split_point = get_split_point(a, b)
-    a0, a1 = split_array(a, split_point)
-    b0, b1 = split_array(b, split_point)
+    split_point = an // 2
+    a_left, a_right = split_array(a, split_point)
+    b_left, b_right = split_array(b, split_point)
 
-    z2 = karatsuba(a1, b1)
-    z0 = karatsuba(a0, b0)
-    z1 = karatsuba(add(a1, a0), add(b1, b0))
+    z2 = karatsuba(a_right, b_right)
+    z0 = karatsuba(a_left, b_left)
+    z1 = karatsuba(add(a_right, a_left), add(b_right, b_left))
     
     term1 = [0] * (split_point * 2) + z2
     term2 = [0] * split_point + subtract(subtract(z1, z2), z0)
     term3 = z0
 
     return add(add(term1, term2), term3)
-
-
-def get_split_point(a, b):
-    return max(len(a), len(b)) // 2
 
 def split_array(arr, split_point):
     return arr[:split_point], arr[split_point:]
