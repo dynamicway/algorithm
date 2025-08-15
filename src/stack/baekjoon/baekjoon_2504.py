@@ -15,7 +15,7 @@ def calculate(s):
                 cur = stack.pop()
                 if isinstance(cur, int):
                     temp += cur
-                elif isPairOf(cur, char):
+                elif is_pair_of(cur, char):
                     stack.append(max(values[char], temp * values[char]))
                     flag = True
                     break
@@ -36,7 +36,7 @@ def calculate(s):
 
     return result
     
-def isPairOf(c1, c2):
+def is_pair_of(c1, c2):
     if '(' == c1 and c2 == ')':
         return True
     if '[' == c1 and c2 == ']':
