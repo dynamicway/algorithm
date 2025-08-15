@@ -8,8 +8,8 @@ def test_exact_match():
     assert match('helloworld', 'helloworld') == True
 
 def test_question_mark():
-    # assert match('hel?o', 'hello') == True
-    # assert match('hel?', 'hell') == True
+    assert match('hel?o', 'hello') == True
+    assert match('hel?', 'hell') == True
     assert match('hel?', 'helll') == False
 
 def test_asterisk():
@@ -22,3 +22,4 @@ def test_asterisk():
     assert match('*h', 'hhhhb') == False
     assert match('h*', 'bbbbbbbh') == False
     assert match('habc*', 'habc') == True
+    assert match('*a*a*a', 'aaa') == True

@@ -1,31 +1,20 @@
-values = {')': 2, ']': 3}
-
 def calculate(s):
     if len(s) & 1 == 1:
         return 0
 
+    values = {')': 2, ']': 3}
     stack = []
     for char in s:
         if char in '([':
             stack.append(char)
         else:
-            flag = False
             temp = 0
-            while len(stack) != 0:
-                cur = stack.pop()
-                if isinstance(cur, int):
-                    temp += cur
-                elif is_pair_of(cur, char):
-                    stack.append(max(values[char], temp * values[char]))
-                    flag = True
-                    break
-                else:
-                    return 0
-            if not flag:
+            while stack and isinstance(stack[-1], int):
+                temp += stack.pop()
+            if not stack or not is_pair_of(stack[-1], char):
                 return 0
-
-            if len(stack) == 0: # 지금 뭘 닫아야 하는데, 열려있는 친구가 없으니까 닫지를 못함. 따라서 0
-                return 0
+            stack.pop()
+            stack.append(max(values[char], temp * values[char]))
             
     result = 0
     while len(stack) != 0:

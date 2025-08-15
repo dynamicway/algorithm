@@ -54,3 +54,20 @@ def startsWith(str, w):
                 return False
         return True
 
+def main():
+    C = int(input())
+    satisfied_names = []
+    for _ in range(C):
+        w = input()
+        file_name_count = int(input())
+        for _ in range(file_name_count):
+            str = input()
+            if match(w, str):
+                satisfied_names.append(str)
+
+    satisfied_names.sort()
+    for name in satisfied_names:
+        print(name)
+
+if __name__ == '__main__':
+    main()
