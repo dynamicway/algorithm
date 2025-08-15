@@ -31,6 +31,4 @@ def josephus(n, k):
 
     return result
 
-n, k = map(int, input().split())
-print("<" + ", ".join(map(str, josephus(n, k))) + ">")
     
