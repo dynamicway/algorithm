@@ -1,5 +1,4 @@
-import pytest
-from algospot.fan_meeting import solve
+from divide_and_conquer.algospot.fan_meeting import solve
 
 
 def test_simple_case():
@@ -30,6 +29,3 @@ def test_example_case():
     assert solve('FFFFF', 'FFFFFFFFFF') == 6
     assert solve('FFFFM', 'FFFFFMMMMF') == 2
     assert solve('MFMFMFFFMMMFMF', 'MMFFFFFMFFFMFFFFFFMFFFMFFFFMFMMFFFFFFF') == 2
-
-if __name__ == "__main__":
-    pytest.main([__file__])

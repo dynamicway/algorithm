@@ -1,4 +1,5 @@
-from algospot.wild_card import match
+from divide_and_conquer.algospot.wild_card import match
+
 
 def test_wildcard_empty():
     assert match('', 'hello') == False

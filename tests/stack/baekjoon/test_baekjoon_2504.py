@@ -1,5 +1,5 @@
 import pytest
-from src.stack.baekjoon.baekjoon_2504 import calculate
+from stack.baekjoon.baekjoon_2504 import calculate
 
 @pytest.mark.parametrize('s', ['(', '([]', '((())'])
 def test_returns_0_when_the_length_is_odd(s):
